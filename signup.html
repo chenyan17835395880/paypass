@@ -104,7 +104,7 @@
                     <input type="tel" maxlength="6" class="pwd-input" id="pwd-input">
                 </div>
             </div>
-            <div id="bigzhe" style="display: block"></div>
+            <div id="bigzhe"></div>
         </form>
     </div>
     <!--显示大图-->
@@ -127,7 +127,8 @@
                 //点击提交按钮时,表单通过验证触发函数
                 console.log('00000')
                 event.preventDefault();
-
+                $('#paypass').css({'display':'block'});
+                $('#bigzhe').css({'display':'block'});
             },
             conditional:{
                 namelimit:function(val){
@@ -172,6 +173,10 @@
                console.log('111')
             }
         });
+        $('#bigzhe').click(function(){
+            $('#paypass').css('display','none');
+            $('#bigzhe').css('display','none');
+        })
 
 
         /*下拉框默认不显示*/
