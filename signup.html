@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en" style="background: #fff">
+<head>
+    <!--文档使用的编码-->
+    <meta charset="UTF-8">
+    <!--为移动设备添加viewport-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--优先使用IE最新版本和chrome-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="applicable-device" content="pc,mobile">
+    <!--<meta name="MobileOptimized" content="width">-->
+    <title>宿舍报名</title>
+    <script src="js/rem.js"></script>
+    <link rel="stylesheet" href="css/dormitory.css">
+    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+    <!--验证-->
+    <script type="text/javascript" src="js/jquery-mvalidate.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/validate.css">
+    <!--图片放大-->
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/swiper.min.js"></script>
+</head>
+<body style="background: #fff">
+    <div id="baoming">
+        <form action="">
+            <!--位置-->
+            <div id="one">
+                <label for="">宿舍位置</label>
+                <div>
+                    <select name="" id="selectdepartment">
+                        <option value="1">南风四斋</option>
+                        <option value="1">南风四斋</option>
+                        <option value="1">南风四斋</option>
+                        <option value="1">南风四斋</option>
+                        <option value="2">ff</option>
+                    </select>
+                    <img src="imgs/bottom.png" alt="">
+                </div>
+                <input type="text" name="" id="departmentnum" placeholder="请输入宿舍编号" data-required="true" data-descriptions="departmentid">
+            </div>
+            <!--名称-->
+            <div id="two">
+                <label for="">宿舍名称</label>
+                <input type="text" name="" placeholder="请输入字母或汉字（最长6位）" data-required="true" data-descriptions="departmentname" data-conditional="namelimit"  maxlength=6>
+            </div>
+            <!--快照-->
+            <div id="three">
+                <label for="">宿舍快照</label>
+                <div>
+                    <img src="imgs/camere.png" alt="">
+                    <input id="photo" type="file" accept="image/*" capture="camera" name="" data-required="true" data-descriptions="departmentphoto">
+                    <img id="img" src="" alt="">
+                    <img id="deleteimg" src="imgs/delete.png" alt="">
+                </div>
+                <span>可以是合照也可以是自己设计的logo~</span>
+            </div>
+            <!--人数-->
+            <div id="four">
+                <label for="">宿舍人数</label>
+                <div>
+                    <select name="" id="numder">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <img src="imgs/bottom.png" alt="">
+                </div>
+            </div>
+            <!--成员-->
+            <div id="five">
+                <label for="">宿舍成员</label>
+                <span>第一位默认为舍长</span>
+            </div>
+            <div id="six">
+                <ul>
+                    <li> <label for=""></label><input id="li0" type="text" name="" placeholder="请输入学号" data-required="true" data-descriptions="departmentnumber"><input type="text" disabled></li>
+                    <!--<span class="errormes errormes1">错误信息</span>-->
+                </ul>
+            </div>
+            <!--提交-->
+            <div id="submit">
+                <div class="xieyi"><input name="" type="checkbox" data-required="true" data-descriptions="agree">我已阅读并同意<a href="">《加油！宿舍争霸活动协议》</a></div>
+                <button type="submit">提交报名表</button>
+            </div>
+            <!--支付-->
+            <div id="paypass">
+                <p class="paypasstip">请输入支付密码</p>
+                <p class="paypassmes">向宿舍争霸活动支付橙子188个</p>
+                <div style="position: relative;width:5.4rem;margin:0 auto">
+                    <div class="fake-box">
+                        <input type="password" readonly="">
+                        <input type="password" readonly="">
+                        <input type="password" readonly="">
+                        <input type="password" readonly="">
+                        <input type="password" readonly="">
+                        <input type="password" readonly="">
+                    </div>
+                    <input type="text" maxlength="6" class="pwd-input" id="pwd-input">
+                </div>
+            </div>
+            <div id="bigzhe" style="display: block"></div>
+        </form>
+    </div>
+    <!--显示大图-->
+    <div class="big_img">
+        <div class="swiper-container2">
+            <div class="swiper-wrapper">
+
+            </div>
+        </div>
+        <div class="swiper-pagination2"></div>
+    </div>
+    <script>
+        /*验证*/
+        $("form").mvalidate({
+            type:1,
+            onKeyup:true,
+            sendForm:true,
+            firstInvalidFocus:false,
+            valid:function(event,options){
+                //点击提交按钮时,表单通过验证触发函数
+                console.log('00000')
+                event.preventDefault();
+
+            },
+            conditional:{
+                namelimit:function(val){
+                    return /^[\u0391-\uFFE5A-Za-z]+$/.test(val) == true;
+                },
+            },
+            descriptions:{
+                departmentid:{
+                    required : '请输入宿舍编号'
+                },
+                departmentname:{
+                    required:'请输入宿舍名称',
+                    conditional:'宿舍名称格式不正确'
+                },
+                agree:{
+                    required : '请勾选协议'
+                },
+                departmentphoto:{
+                    required:'请选择宿舍照片'
+                },
+                departmentnumber:{
+                    required:'请输入学号'
+                }
+            }
+        });
+
+        /*支付密码*/
+        var $input = $(".fake-box input");
+        $("#pwd-input").on("input", function() {
+            var pwd = $(this).val().trim();
+            for (var i = 0, len = pwd.length; i < len; i++) {
+                $input.eq("" + i + "").val(pwd[i]);
+            }
+            $input.each(function() {
+                var index = $(this).index();
+                if (index >= len) {
+                    $(this).val("");
+                }
+            });
+            if (len == 6) {
+                //提交支付
+               console.log('111')
+            }
+        });
+
+
+        /*下拉框默认不显示*/
+        function load(){
+            var x = document.querySelectorAll('select');
+            var x1;
+            for(var i=0;i<x.length;i++){
+                x1=document.getElementById($(x[i]).attr('id'));
+                x1.selectedIndex = -1;
+            }
+        }
+
+        /*上传照片*/
+        $('#photo').on('change',function(){
+            console.log($(this).val())
+            $('#img').show();
+            $('#deleteimg').show();
+            var $c = document.querySelector("#photo");//上传出发按钮
+            var $d = document.querySelector("#img");//图片容器
+            var file = $c.files[0];//获取file对象单张
+            var reader = new FileReader();//创建filereader对象
+            reader.readAsDataURL(file);//转换数据
+            reader.onload = function(e) {//加载ok时触发的事件
+                console.log(file);
+                $d.setAttribute("src", e.target.result);//给图片地址,显示缩略图
+                $d.style.display = "block";//样式显示
+            };
+        });
+        /*点击查看大图*/
+        $(document).ready(function(){
+            /*调起大图 S*/
+            var mySwiper = new Swiper('.swiper-container2', {
+                loop: false,
+                pagination: '.swiper-pagination2',
+            })
+            $("#three").on("click", "#img", function() {
+                var imgBox = $(this).parents("div").find("#img");
+                var i = $(imgBox).index(this);
+                $(".big_img .swiper-wrapper").html("");
+                for(var j = 0 ,c = imgBox.length; j < c ;j++){
+                    $(".big_img .swiper-wrapper").append('<div class="swiper-slide"><div class="cell"><img src="' + imgBox.eq(j).attr("src") + '" / ></div></div>');
+                }
+                mySwiper.updateSlidesSize();
+                mySwiper.updatePagination();
+                $(".big_img").css({
+                    "z-index": 1001,
+                    "opacity": "1"
+                });
+                mySwiper.slideTo(i, 0, false);
+                return false;
+            });
+
+            $(".big_img").on("click",
+                function() {
+                    $(this).css({
+                        "z-index": "-1",
+                        "opacity": "0"
+                    });
+
+                });
+        });
+        /*调起大图 E*/
+        $('#deleteimg').click(function(){
+            $('#img').attr('src','');
+            $('#img').hide();
+            $('#deleteimg').hide();
+        })
+
+
+        /*宿舍人数显示几个，宿舍成员就有几个*/
+        $('#numder option').click(function(){
+            var str='';
+            for(var i=0;i<$('#numder').val()-$('#six ul li').length;i++){
+                str+='<li> <label for=""></label><input id="li'+ (i+1) +'" type="text" name="" placeholder="请输入学号" data-required="true" data-descriptions="departmentnumber"><input type="text" disabled></li>';
+            }
+            $('#six ul').append(str)
+        })
+
+
+        /*按钮换颜色*/
+        $('#submit div input').click(function(){
+            if(this.checked){
+                $('#submit button').css({'background':'#FF692E'})
+            }else{
+                $('#submit button').css({'background':'#B2B2B2'})
+            }
+        })
+
+
+    </script>
+</body>
+</html>
