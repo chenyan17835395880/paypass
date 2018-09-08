@@ -51,8 +51,8 @@
             <div id="three">
                 <label for="">宿舍快照</label>
                 <div>
-                    <img src="imgs/camere.png" alt="">
-                    <input id="photo" type="file" accept="image/*" capture="camera" name="" data-required="true" data-descriptions="departmentphoto">
+                    <img src="imgs/camere.png" alt=""><!--capture="camera"-->
+                    <input id="photo" type="file" accept="image/*"  name="" data-required="true" data-descriptions="departmentphoto">
                     <img id="img" src="" alt="">
                     <img id="deleteimg" src="imgs/delete.png" alt="">
                 </div>
@@ -247,7 +247,7 @@
 
 
         /*宿舍人数显示几个，宿舍成员就有几个*/
-        $('#numder option').click(function(){
+        $('#numder').change(function(){
             var str='';
             for(var i=0;i<$('#numder').val()-$('#six ul li').length;i++){
                 str+='<li> <label for=""></label><input id="li'+ (i+1) +'" type="text" name="" placeholder="请输入学号" data-required="true" data-descriptions="departmentnumber"><input type="text" disabled></li>';
