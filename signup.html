@@ -52,7 +52,7 @@
                 <label for="">宿舍快照</label>
                 <div>
                     <img src="imgs/camere.png" alt=""><!--capture="camera"-->
-                    <input id="photo" type="file" accept="image/*"  custom-on-change="takePicture"  name="" data-required="true" data-descriptions="departmentphoto">
+                    <input id="photo" type="file"  custom-on-change="takePicture"  name="" data-required="true" data-descriptions="departmentphoto">
                     <img id="img" src="" alt="">
                     <img id="deleteimg" src="imgs/delete.png" alt="">
                 </div>
@@ -61,7 +61,7 @@
             <!--人数-->
             <div id="four">
                 <label for="">宿舍人数</label>
-                <div>
+                <!--<div>
                     <select name="" id="numder">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -70,6 +70,15 @@
                         <option value="5">5</option>
                     </select>
                     <img src="imgs/bottom.png" alt="">
+                </div>-->
+                <div class="pullDown">
+                    <div class="select1">选择宿舍人数</div><img class="icon" src="imgs/bottom.png" alt="">
+                    <div class="seleUl">
+                        <div class="seleLi"><span>1</span><input type="radio" name="number" class="checkSele" value="1"></div>
+                        <div class="seleLi"><span>2</span><input type="radio" name="number" class="checkSele" value="2"></div>
+                        <div class="seleLi"><span>3</span><input type="radio" name="number" class="checkSele" value="3"></div>
+                        <div class="seleLi"><span>4</span><input type="radio" name="number" class="checkSele" value="4"></div>
+                    </div>
                 </div>
             </div>
             <!--成员-->
@@ -117,6 +126,33 @@
         <div class="swiper-pagination2"></div>
     </div>
     <script>
+        //显示下拉框
+        $(".select1").click(function(){
+            console.log($(".seleUl").slideDown())
+            if($(".seleUl").slideDown()){
+                $(".seleUl").hide();
+            }else{
+                $(".seleUl").show();
+            }
+
+            //前头转换
+            if($('.icon').hasClass("icon_rotate")){
+                $('.icon').removeClass("icon_rotate");
+            }else{
+                $('.icon').addClass("icon_rotate");
+            }
+        })
+
+
+        //下拉框选中
+        $(".seleLi").click(function(){
+            $(".seleUl"). hide();
+            $('.icon').removeClass("icon_rotate")
+            var zxd =$(".checkSele:radio:checked").val();
+            $(".select1").html(zxd);
+        })
+
+
         /*验证*/
         $("form").mvalidate({
             type:1,
