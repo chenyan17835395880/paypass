@@ -33,9 +33,19 @@
                 <div>
                     <select name="" id="selectdepartment">
                         <option value="1">南风四斋</option>
-                        <option value="1">南风四斋</option>
-                        <option value="1">南风四斋</option>
-                        <option value="1">南风四斋</option>
+                        <option value="1">南风1斋</option>
+                        <option value="1">南风2斋</option>
+                        <option value="1">南风3斋</option>
+                        <option value="1">南风4斋</option>
+                        <option value="1">南风5斋</option>
+                        <option value="1">南风6斋</option>
+                        <option value="1">南风7斋</option>
+                        <option value="1">南风8斋</option>
+                        <option value="1">南风9斋</option>
+                        <option value="1">南风0斋</option>
+                        <option value="1">南风11斋</option>
+                        <option value="1">南风22斋</option>
+                        <option value="1">南风33斋</option>
                         <option value="2">ff</option>
                     </select>
                     <img src="imgs/bottom.png" alt="">
@@ -127,40 +137,29 @@
     </div>
     <script>
         //显示下拉框
-        $("body").click(function(){
-            if($(".seleUl").slideDown()){
-                $(".seleUl").hide();
+        $(".select1").click(function(){
+            if($(".seleUl").css('display') == 'block'){
+                $(".seleUl").hide()
             }else{
-                $(".seleUl").show();
-            }
-            //前头转换
-            if($('.icon').hasClass("icon_rotate")){
-                $('.icon').removeClass("icon_rotate");
-            }else{
-                $('.icon').addClass("icon_rotate");
+                $(".seleUl").show()
             }
         })
-        $(".select1").click(function(){
-            if($(".seleUl").slideDown()){
-                $(".seleUl").hide();
+        $(".icon").click(function(){
+            if($(".seleUl").css('display') == 'block'){
+                $(".seleUl").hide()
             }else{
-                $(".seleUl").show();
-            }
-            //前头转换
-            if($('.icon').hasClass("icon_rotate")){
-                $('.icon').removeClass("icon_rotate");
-            }else{
-                $('.icon').addClass("icon_rotate");
+                $(".seleUl").show()
             }
         })
 
 
         //下拉框选中
-        $(".seleLi").click(function(){
+        $(".checkSele").click(function(){
             $(".seleUl"). hide();
             $('.icon').removeClass("icon_rotate")
             var zxd =$(".checkSele:radio:checked").val();
             $(".select1").html(zxd);
+            $('.pullDown').css({'paddingTop':'0.16rem','height':'0.44rem'})
         })
 
 
