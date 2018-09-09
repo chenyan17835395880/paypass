@@ -159,7 +159,7 @@
             $('.icon').removeClass("icon_rotate")
             var zxd =$(".checkSele:radio:checked").val();
             $(".select1").html(zxd);
-            $('.pullDown').css({'paddingTop':'0.16rem','height':'0.44rem'})
+            $('.pullDown').css({'paddingTop':'0.15rem','height':'0.45rem'})
         })
 
 
@@ -293,9 +293,17 @@
 
 
         /*宿舍人数显示几个，宿舍成员就有几个*/
-        $('#numder').change(function(){
+        /*$('#numder').change(function(){
             var str='';
             for(var i=0;i<$('#numder').val()-$('#six ul li').length;i++){
+                str+='<li> <label for=""></label><input id="li'+ (i+1) +'" type="text" name="" placeholder="请输入学号" data-required="true" data-descriptions="departmentnumber"><input type="text" disabled></li>';
+            }
+            $('#six ul').append(str)
+        });*/
+        $('.select1').bind('DOMNodeInserted',function(){
+            console.log('123')
+            var str='';
+            for(var i=0;i<$('.select1').html()-$('#six ul li').length;i++){
                 str+='<li> <label for=""></label><input id="li'+ (i+1) +'" type="text" name="" placeholder="请输入学号" data-required="true" data-descriptions="departmentnumber"><input type="text" disabled></li>';
             }
             $('#six ul').append(str)
