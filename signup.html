@@ -127,14 +127,25 @@
     </div>
     <script>
         //显示下拉框
-        $(".select1").click(function(){
-            console.log($(".seleUl").slideDown())
+        $("body").click(function(){
             if($(".seleUl").slideDown()){
                 $(".seleUl").hide();
             }else{
                 $(".seleUl").show();
             }
-
+            //前头转换
+            if($('.icon').hasClass("icon_rotate")){
+                $('.icon').removeClass("icon_rotate");
+            }else{
+                $('.icon').addClass("icon_rotate");
+            }
+        })
+        $(".select1").click(function(){
+            if($(".seleUl").slideDown()){
+                $(".seleUl").hide();
+            }else{
+                $(".seleUl").show();
+            }
             //前头转换
             if($('.icon').hasClass("icon_rotate")){
                 $('.icon').removeClass("icon_rotate");
